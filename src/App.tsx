@@ -55,24 +55,30 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f6f3ec', fontFamily: '"Inter", system-ui, sans-serif' }}>
-      <header style={{ borderBottom: '1px solid #e8e4da' }}>
+      <style>{`
+        @keyframes lineIn     { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+        @keyframes headerIn   { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:translateY(0) } }
+        @keyframes eyebrowIn  { from { opacity:0 } to { opacity:1 } }
+      `}</style>
+      <header>
         <div style={{
           maxWidth: '1200px', margin: '0 auto',
           padding: '48px 64px 32px',
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
         }}>
         <div>
-          <p style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9e9a91', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace' }}>
+          <p style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9e9a91', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.1s forwards' }}>
             Sallie Harrison Presentation Deck
           </p>
-          <h1 style={{ fontSize: '28px', fontWeight: 600, color: '#010103', margin: 0, letterSpacing: '-0.02em' }}>
+          <h1 style={{ fontSize: '28px', fontWeight: 600, color: '#010103', margin: 0, letterSpacing: '-0.02em', opacity: 0, animation: 'headerIn 0.55s ease 0.2s forwards' }}>
             Red Bull + Habit Tracker App
           </h1>
         </div>
-        <p style={{ fontSize: '13px', color: '#9e9a91', margin: 0, fontFamily: '"Azeret Mono", monospace' }}>
+        <p style={{ fontSize: '13px', color: '#9e9a91', margin: 0, fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.3s forwards' }}>
           {slides.length} slides
         </p>
         </div>
+        <div style={{ height: '1px', backgroundColor: '#e8e4da', transformOrigin: 'left', transform: 'scaleX(0)', animation: 'lineIn 0.7s ease 0.15s forwards' }} />
       </header>
 
       <main>
