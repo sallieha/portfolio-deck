@@ -79,14 +79,14 @@ export default function App() {
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 64px 0' }}>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', paddingBottom: '32px' }}>
             <div>
-              <p style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9e9a91', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.1s forwards' }}>
+              <p style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#010103', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.1s forwards' }}>
                 Sallie Harrison Presentation Deck
               </p>
               <h1 style={{ fontSize: '28px', fontWeight: 600, color: '#010103', margin: 0, letterSpacing: '-0.02em', opacity: 0, animation: 'headerIn 0.55s ease 0.2s forwards' }}>
                 Red Bull + Habit Tracker App
               </h1>
             </div>
-            <p style={{ fontSize: '13px', color: '#9e9a91', margin: 0, fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.3s forwards' }}>
+            <p style={{ fontSize: '13px', color: '#010103', margin: 0, fontFamily: '"Azeret Mono", monospace', textTransform: 'uppercase', letterSpacing: '0.12em', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.3s forwards' }}>
               {slides.length} slides
             </p>
           </div>
