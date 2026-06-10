@@ -15,6 +15,24 @@ const slides = Array.from({ length: 31 }, (_, i) => {
 export default function App() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [active, setActive] = useState<number | null>(null);
+  useEffect(() => {
+    const cards = document.querySelectorAll<HTMLElement>('[data-slide]');
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            obs.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
+    );
+    cards.forEach(card => obs.observe(card));
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
     if (active === null) return;
@@ -52,13 +70,19 @@ export default function App() {
       <main>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 64px 100px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '40px 32px' }}>
-          {slides.map((slide) => (
+          {slides.map((slide, i) => (
             <div
               key={slide.id}
+              data-slide
               onClick={() => setActive(active === slide.id ? null : slide.id)}
               onMouseEnter={() => setHovered(slide.id)}
               onMouseLeave={() => setHovered(null)}
-              style={{ cursor: 'pointer' }}
+              style={{
+                cursor: 'pointer',
+                opacity: 0,
+                transform: 'translateY(18px)',
+                transition: `opacity 0.45s ease ${(i % 5) * 55}ms, transform 0.45s ease ${(i % 5) * 55}ms`,
+              }}
             >
               <div style={{
                 position: 'relative',
