@@ -31,7 +31,7 @@ export default function App() {
     <div style={{ minHeight: '100vh', backgroundColor: '#f6f3ec', fontFamily: '"Inter", system-ui, sans-serif' }}>
       <header style={{ borderBottom: '1px solid #e8e4da' }}>
         <div style={{
-          maxWidth: '1400px', margin: '0 auto',
+          maxWidth: '1200px', margin: '0 auto',
           padding: '48px 64px 32px',
           display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
         }}>
@@ -50,7 +50,7 @@ export default function App() {
       </header>
 
       <main>
-        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '48px 64px 100px' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '48px 64px 100px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '40px 32px' }}>
           {slides.map((slide) => (
             <div
