@@ -39,7 +39,22 @@ export default function App() {
       { threshold: 0.08, rootMargin: '0px 0px -32px 0px' }
     );
     cards.forEach(card => obs.observe(card));
-    return () => obs.disconnect();
+
+    const footerLine = document.querySelector<HTMLElement>('[data-footer-line]');
+    const footerObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.transform = 'scaleX(1)';
+            footerObs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+    if (footerLine) footerObs.observe(footerLine);
+
+    return () => { obs.disconnect(); footerObs.disconnect(); };
   }, []);
 
   useEffect(() => {
@@ -131,6 +146,15 @@ export default function App() {
         </div>
         </div>
       </main>
+
+      <footer>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 64px 64px' }}>
+          <div
+            data-footer-line
+            style={{ height: '1px', backgroundColor: '#b8b2a7', transformOrigin: 'left', transform: 'scaleX(0)', transition: 'transform 1.4s ease' }}
+          />
+        </div>
+      </footer>
 
       <style>{`
         @keyframes lbIn  { from { opacity:0; transform:scale(0.97) } to { opacity:1; transform:scale(1) } }
