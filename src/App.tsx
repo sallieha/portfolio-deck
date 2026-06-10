@@ -29,13 +29,12 @@ export default function App() {
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#f6f3ec', fontFamily: '"Inter", system-ui, sans-serif' }}>
-      <header style={{
-        padding: '48px 48px 32px',
-        display: 'flex',
-        alignItems: 'flex-end',
-        justifyContent: 'space-between',
-        borderBottom: '1px solid #e8e4da',
-      }}>
+      <header style={{ borderBottom: '1px solid #e8e4da' }}>
+        <div style={{
+          maxWidth: '1400px', margin: '0 auto',
+          padding: '48px 64px 32px',
+          display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between',
+        }}>
         <div>
           <p style={{ fontSize: '11px', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9e9a91', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace' }}>
             Sallie Harrison Presentation Deck
@@ -47,9 +46,11 @@ export default function App() {
         <p style={{ fontSize: '13px', color: '#9e9a91', margin: 0, fontFamily: '"Azeret Mono", monospace' }}>
           {slides.length} slides
         </p>
+        </div>
       </header>
 
-      <main style={{ padding: '48px 48px 100px' }}>
+      <main>
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '48px 64px 100px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '40px 32px' }}>
           {slides.map((slide) => (
             <div
@@ -91,6 +92,7 @@ export default function App() {
               </p>
             </div>
           ))}
+        </div>
         </div>
       </main>
 
