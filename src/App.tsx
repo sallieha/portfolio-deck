@@ -78,7 +78,7 @@ export default function App() {
           {slides.length} slides
         </p>
         </div>
-        <div style={{ height: '1px', backgroundColor: '#e8e4da', transformOrigin: 'left', transform: 'scaleX(0)', animation: 'lineIn 0.7s ease 0.15s forwards' }} />
+        <div style={{ height: '1px', backgroundColor: '#b8b2a7', transformOrigin: 'left', transform: 'scaleX(0)', animation: 'lineIn 1.4s ease 0.15s forwards' }} />
       </header>
 
       <main>
