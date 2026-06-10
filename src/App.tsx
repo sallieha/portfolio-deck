@@ -82,7 +82,7 @@ export default function App() {
               <p style={{ fontSize: '13px', fontWeight: 400, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#010103', marginBottom: '6px', fontFamily: '"Azeret Mono", monospace', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.1s forwards' }}>
                 Sallie Harrison Presentation Deck
               </p>
-              <h1 style={{ fontSize: '75px', fontWeight: 400, fontFamily: '"Switzer", "Inter", sans-serif', color: '#010103', margin: 0, letterSpacing: '0.06em', textTransform: 'uppercase', opacity: 0, animation: 'headerIn 0.55s ease 0.2s forwards' }}>
+              <h1 style={{ fontSize: '50px', fontWeight: 400, fontFamily: '"Switzer", "Inter", sans-serif', color: '#010103', margin: 0, letterSpacing: '0.06em', textTransform: 'uppercase', opacity: 0, animation: 'headerIn 0.55s ease 0.2s forwards' }}>
                 Red Bull + Habit Tracker App
               </h1>
             </div>
