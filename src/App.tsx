@@ -86,7 +86,7 @@ export default function App() {
                 Red Bull + Habit Tracker App
               </h1>
             </div>
-            <p style={{ fontSize: '13px', color: '#010103', margin: 0, fontFamily: '"Azeret Mono", monospace', textTransform: 'uppercase', letterSpacing: '0.12em', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.3s forwards' }}>
+            <p style={{ fontSize: '11px', color: '#010103', margin: 0, fontFamily: '"Azeret Mono", monospace', textTransform: 'uppercase', letterSpacing: '0.12em', opacity: 0, animation: 'eyebrowIn 0.5s ease 0.3s forwards' }}>
               {slides.length} slides
             </p>
           </div>
