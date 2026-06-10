@@ -1,2 +1,2 @@
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; }
+html, body { margin: 0; background-color: #f6f3ec; }
