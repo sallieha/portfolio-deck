@@ -15,6 +15,14 @@ const slides = Array.from({ length: 31 }, (_, i) => {
 export default function App() {
   const [hovered, setHovered] = useState<number | null>(null);
   const [active, setActive] = useState<number | null>(null);
+  const [closing, setClosing] = useState(false);
+  const ANIM = 200;
+
+  const closeLightbox = () => {
+    setClosing(true);
+    setTimeout(() => { setActive(null); setClosing(false); }, ANIM);
+  };
+
   useEffect(() => {
     const cards = document.querySelectorAll<HTMLElement>('[data-slide]');
     const obs = new IntersectionObserver(
@@ -39,7 +47,7 @@ export default function App() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') setActive(a => (a && a > 1 ? a - 1 : a));
       if (e.key === 'ArrowRight') setActive(a => (a && a < slides.length ? a + 1 : a));
-      if (e.key === 'Escape') setActive(null);
+      if (e.key === 'Escape') closeLightbox();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -120,22 +128,29 @@ export default function App() {
         </div>
       </main>
 
+      <style>{`
+        @keyframes lbIn  { from { opacity:0; transform:scale(0.97) } to { opacity:1; transform:scale(1) } }
+        @keyframes lbOut { from { opacity:1; transform:scale(1) } to { opacity:0; transform:scale(0.97) } }
+        @keyframes lbBgIn  { from { opacity:0 } to { opacity:1 } }
+        @keyframes lbBgOut { from { opacity:1 } to { opacity:0 } }
+      `}</style>
       {active !== null && (
         <div
-          onClick={() => setActive(null)}
+          onClick={closeLightbox}
           style={{
             position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.85)',
             display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '24px',
+            animation: `${closing ? 'lbBgOut' : 'lbBgIn'} ${ANIM}ms ease forwards`,
           }}
         >
-          <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', overflow: 'hidden' }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ position: 'relative', maxWidth: '90vw', maxHeight: '90vh', borderRadius: '8px', overflow: 'hidden', animation: `${closing ? 'lbOut' : 'lbIn'} ${ANIM}ms ease forwards` }}>
             <img
               src={slides[active - 1].srcHD}
               alt={`Slide ${active}`}
               data-lightbox-img
               style={{ display: 'block', maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain' }}
             />
-            <button onClick={() => setActive(null)} style={{ position: 'absolute', top: '12px', left: '12px', ...btnStyle }} title="Close">
+            <button onClick={closeLightbox} style={{ position: 'absolute', top: '12px', left: '12px', ...btnStyle }} title="Close">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1L11 11M11 1L1 11" stroke="white" strokeWidth="2" strokeLinecap="round"/></svg>
             </button>
             <div style={{ position: 'absolute', bottom: '12px', left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: '8px' }}>
